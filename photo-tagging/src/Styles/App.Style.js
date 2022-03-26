@@ -6,3 +6,7 @@ export const Flex = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const ImgContainer = styled.div`
+    position: relative;
+`;

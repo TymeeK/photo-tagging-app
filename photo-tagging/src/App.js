@@ -1,24 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { Flex } from './Styles/App.Style';
+import { Flex, ImgContainer } from './Styles/App.Style';
+import Dropdown from './Dropdown';
+import { getData } from './firebase-config';
 
 //Waldo is between x coordinate 980 and 1010, and y coordinate 355 and 410
 
 function App() {
-    const [x, setX] = useState();
-    const [y, setY] = useState();
+    const [open, setOpen] = useState(false);
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+    const [userChoice, setUserChoice] = useState();
 
     function handleClick(event) {
-        console.log(event.nativeEvent.offsetX);
-        console.log(event.nativeEvent.offsetY);
+        setOpen(prevState => !prevState);
+        setX(event.nativeEvent.offsetX);
+        setY(event.nativeEvent.offsetY);
     }
+
+    function validateOptions(event) {
+        event.preventDefault();
+        setUserChoice(event.target.innerText);
+        setOpen(prevState => !prevState);
+        getData(event.target.innerText);
+    }
+
     return (
         <>
             <Flex>
-                <img
-                    onClick={handleClick}
-                    src={require('./Images/waldo.jpg')}
-                    alt='waldo'
-                />
+                <ImgContainer>
+                    <img
+                        onClick={handleClick}
+                        src={require('./Images/waldo.jpg')}
+                        alt='waldo'
+                    />
+                    {open && (
+                        <Dropdown
+                            horizontal={x}
+                            vertical={y}
+                            handleOptions={validateOptions}
+                        />
+                    )}
+                </ImgContainer>
+
                 <h1>x: {x}</h1>
                 <h1>y: {y}</h1>
             </Flex>
