@@ -54,6 +54,7 @@ function App() {
 
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
+            setShowDialog(prevDialog => !prevDialog);
             event.preventDefault();
             writeUser(event.target.value, timeRef.current);
         }
