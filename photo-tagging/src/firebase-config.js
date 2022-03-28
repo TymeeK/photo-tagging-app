@@ -26,8 +26,9 @@ export const getData = async name => {
     return docSnap.data();
 };
 
-export const writeUser = async () => {
+export const writeUser = async (name, seconds) => {
     const docRef = await addDoc(collection(db, 'users'), {
-        username: 'Test',
+        username: `${name}`,
+        seconds: `${seconds}`,
     });
 };

@@ -11,6 +11,8 @@ function App() {
     const foundOdlaw = useRef(false);
     const foundWizard = useRef(false);
     const [time, setTime] = useState(0);
+    const [showDialog, setShowDialog] = useState(false);
+    const timeRef = useRef(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -35,22 +37,25 @@ function App() {
             checkCharacters(event.target.innerText);
         }
         if (foundWaldo.current && foundOdlaw.current && foundWizard.current) {
-            console.log('Found all 3');
-            console.log(time);
-            writeUser();
+            timeRef.current = time;
+            setShowDialog(prevDialog => !prevDialog);
         }
     }
 
     function checkCharacters(chars) {
         if (chars === 'waldo') {
-            console.log('Found waldo');
             foundWaldo.current = true;
         } else if (chars === 'odlaw') {
-            console.log('Found Odlaw');
             foundOdlaw.current = true;
         } else if (chars === 'wizard') {
-            console.log('Found wizard');
             foundWizard.current = true;
+        }
+    }
+
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            writeUser(event.target.value, timeRef.current);
         }
     }
 
@@ -71,6 +76,17 @@ function App() {
                         />
                     )}
                 </ImgContainer>
+                {showDialog && (
+                    <form>
+                        <label htmlFor=''>
+                            Congratulations! you found all Waldo, Odlaw, and
+                            Wizard in {timeRef.current} seconds
+                        </label>
+                        <br />
+                        <label htmlFor='username'>Enter your username</label>
+                        <input type='text' onKeyDown={handleKeyDown} />
+                    </form>
+                )}
             </Flex>
         </>
     );
