@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    addDoc,
+    collection,
+} from 'firebase/firestore';
 
 export const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -18,4 +24,10 @@ export const getData = async name => {
     const docRef = doc(db, 'characters', `${name}`);
     const docSnap = await getDoc(docRef);
     return docSnap.data();
+};
+
+export const writeUser = async () => {
+    const docRef = await addDoc(collection(db, 'users'), {
+        username: 'Test',
+    });
 };
