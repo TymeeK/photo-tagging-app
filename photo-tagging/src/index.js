@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './Styles/index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Scoreboard from './Scoreboard';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Router>
+            <Routes>
+                <Route path='/' element={<App />} />
+                <Route path='/scoreboard' element={<Scoreboard />} />
+            </Routes>
+        </Router>
     </React.StrictMode>,
     document.getElementById('root')
 );
