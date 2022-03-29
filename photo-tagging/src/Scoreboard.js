@@ -10,21 +10,15 @@ export default function Scoreboard() {
             setUsers(tempUsers);
         };
         getUsers();
-
-        // setUsers(getAllUsers());
     }, []);
 
-    useEffect(() => {
-        console.log(users);
-    }, [users]);
-
-    //We want to make a call to firebase to retrieve all users
     return (
         <div>
             {users.map(users => {
                 return (
                     <div>
-                        <h1>{users.username}</h1>{' '}
+                        <label htmlFor=''>{users.username}</label>
+                        <label htmlFor=''> {users.seconds}</label>
                     </div>
                 );
             })}
