@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Flex, ImgContainer } from './Styles/App.Style';
 import Dropdown from './Dropdown';
 import { getData, writeUser } from './firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -13,6 +14,7 @@ function App() {
     const [time, setTime] = useState(0);
     const [showDialog, setShowDialog] = useState(false);
     const timeRef = useRef(0);
+    let navigate = useNavigate();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -57,6 +59,7 @@ function App() {
             setShowDialog(prevDialog => !prevDialog);
             event.preventDefault();
             writeUser(event.target.value, timeRef.current);
+            navigate('/scoreboard');
         }
     }
 
