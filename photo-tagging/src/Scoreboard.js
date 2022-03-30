@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getAllUsers } from './firebase-config';
-import { Grid, Flex, Element } from './Styles/Scoreboard.Style';
+import {
+    Table,
+    Flex,
+    TableHeader,
+    TableDetails,
+} from './Styles/Scoreboard.Style';
 
 export default function Scoreboard() {
     const [users, setUsers] = useState([]);
@@ -15,16 +20,20 @@ export default function Scoreboard() {
 
     return (
         <Flex>
-            <Grid numUsers={users.length}>
+            <Table>
+                <tr>
+                    <TableHeader>Name</TableHeader>
+                    <TableHeader>Seconds</TableHeader>
+                </tr>
                 {users.map((user, index) => {
                     return (
-                        <Element key={index}>
-                            <label>{user.username}</label>
-                            <label> {user.seconds} seconds</label>
-                        </Element>
+                        <tr key={index}>
+                            <TableDetails>{user.username}</TableDetails>
+                            <TableDetails>{user.seconds}</TableDetails>
+                        </tr>
                     );
                 })}
-            </Grid>
+            </Table>
         </Flex>
     );
 }
