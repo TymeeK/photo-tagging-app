@@ -21,5 +21,8 @@ export const Element = styled.div`
     display: flex;
     align-items: center;
     border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
     margin-top: 0.5px;
+    padding-left: 20px;
 `;
