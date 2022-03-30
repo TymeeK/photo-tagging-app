@@ -5,6 +5,7 @@ import {
     getDoc,
     addDoc,
     collection,
+    getDocs,
 } from 'firebase/firestore';
 
 export const firebaseConfig = {
@@ -31,4 +32,11 @@ export const writeUser = async (name, seconds) => {
         username: `${name}`,
         seconds: `${seconds}`,
     });
+};
+
+export const getAllUsers = async () => {
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    const users = querySnapshot.docs.map(doc => doc.data());
+    console.log(users);
+    return users;
 };
