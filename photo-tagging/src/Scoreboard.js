@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getAllUsers } from './firebase-config';
+import {
+    Table,
+    Flex,
+    TableHeader,
+    TableDetails,
+} from './Styles/Scoreboard.Style';
 
 export default function Scoreboard() {
     const [users, setUsers] = useState([]);
@@ -13,15 +19,21 @@ export default function Scoreboard() {
     }, []);
 
     return (
-        <div>
-            {users.map(users => {
-                return (
-                    <div>
-                        <label htmlFor=''>{users.username}</label>
-                        <label htmlFor=''> {users.seconds}</label>
-                    </div>
-                );
-            })}
-        </div>
+        <Flex>
+            <Table>
+                <tr>
+                    <TableHeader>Name</TableHeader>
+                    <TableHeader>Seconds</TableHeader>
+                </tr>
+                {users.map((user, index) => {
+                    return (
+                        <tr key={index}>
+                            <TableDetails>{user.username}</TableDetails>
+                            <TableDetails>{user.seconds}</TableDetails>
+                        </tr>
+                    );
+                })}
+            </Table>
+        </Flex>
     );
 }

@@ -37,6 +37,5 @@ export const writeUser = async (name, seconds) => {
 export const getAllUsers = async () => {
     const querySnapshot = await getDocs(collection(db, 'users'));
     const users = querySnapshot.docs.map(doc => doc.data());
-    console.log(users);
     return users;
 };
