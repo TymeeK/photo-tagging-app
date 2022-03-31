@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Flex, ImgContainer } from './Styles/App.Style';
+import { Flex, ImgContainer, NavContainer } from './Styles/App.Style';
 import Dropdown from './Dropdown';
 import { getData, writeUser } from './firebase-config';
 import { useNavigate } from 'react-router-dom';
@@ -65,6 +65,10 @@ function App() {
 
     return (
         <>
+            <NavContainer>
+                <h1>Where's Waldo</h1>
+                <h1>{time} seconds</h1>
+            </NavContainer>
             <Flex>
                 <ImgContainer>
                     <img

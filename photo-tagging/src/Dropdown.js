@@ -3,6 +3,7 @@ import {
     Container,
     DropdownContainer,
     UnorderedList,
+    List,
 } from './Styles/Dropdown.Style';
 
 export default function Dropdown(props) {
@@ -10,8 +11,8 @@ export default function Dropdown(props) {
         <Container horizontal={props.horizontal} vertical={props.vertical}>
             <DropdownContainer>
                 <UnorderedList>
-                    <li onClick={props.handleOptions}>waldo</li>
-                    <li onClick={props.handleOptions}>odlaw</li>
+                    <List onClick={props.handleOptions}>waldo</List>
+                    <List onClick={props.handleOptions}>odlaw</List>
                     <li onClick={props.handleOptions}>wizard</li>
                 </UnorderedList>
             </DropdownContainer>

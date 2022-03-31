@@ -11,12 +11,20 @@ export const DropdownContainer = styled.div`
 `;
 
 export const UnorderedList = styled.ul`
+    text-align: center;
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: red;
+    background-color: white;
 
     &:hover {
         cursor: pointer;
+    }
+`;
+
+export const List = styled.li`
+    border-bottom: 1px solid black;
+    &:hover {
+        background-color: gray;
     }
 `;
