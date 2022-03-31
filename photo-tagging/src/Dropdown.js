@@ -13,7 +13,7 @@ export default function Dropdown(props) {
                 <UnorderedList>
                     <List onClick={props.handleOptions}>waldo</List>
                     <List onClick={props.handleOptions}>odlaw</List>
-                    <li onClick={props.handleOptions}>wizard</li>
+                    <List onClick={props.handleOptions}>wizard</List>
                 </UnorderedList>
             </DropdownContainer>
         </Container>
