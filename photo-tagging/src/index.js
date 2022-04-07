@@ -7,7 +7,7 @@ import Scoreboard from './Components/Scoreboard';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route path='/' element={<App />} />
                 <Route path='/scoreboard' element={<Scoreboard />} />
