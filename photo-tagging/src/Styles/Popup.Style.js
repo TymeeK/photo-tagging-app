@@ -25,4 +25,8 @@ export const CloseButton = styled.button`
     position: absolute;
     top: 16px;
     right: 16px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
