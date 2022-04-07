@@ -5,7 +5,7 @@ import {
     Flex,
     TableHeader,
     TableDetails,
-} from './Styles/Scoreboard.Style';
+} from '../Styles/Scoreboard.Style';
 
 export default function Scoreboard() {
     const [users, setUsers] = useState([]);

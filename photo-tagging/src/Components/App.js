@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Flex, ImgContainer, NavContainer } from './Styles/App.Style';
+import { Flex, ImgContainer, NavContainer } from '../Styles/App.Style';
 import Dropdown from './Dropdown';
 import { getData, writeUser } from './firebase-config';
 import { useNavigate } from 'react-router-dom';
+import Popup from './Popup';
 
 function App() {
     const [open, setOpen] = useState(false);
@@ -73,7 +74,7 @@ function App() {
                 <ImgContainer>
                     <img
                         onClick={handleClick}
-                        src={require('./Images/waldo.jpg')}
+                        src={require('../Images/waldo.jpg')}
                         alt='waldo'
                     />
                     {open && (
@@ -84,7 +85,10 @@ function App() {
                         />
                     )}
                 </ImgContainer>
-                {showDialog && (
+                {/* {showDialog && (
+                
+                )} */}
+                <Popup trigger={showDialog}>
                     <form>
                         <label htmlFor=''>
                             Congratulations! you found all Waldo, Odlaw, and
@@ -94,7 +98,7 @@ function App() {
                         <label htmlFor='username'>Enter your username</label>
                         <input type='text' onKeyDown={handleKeyDown} />
                     </form>
-                )}
+                </Popup>
             </Flex>
         </>
     );

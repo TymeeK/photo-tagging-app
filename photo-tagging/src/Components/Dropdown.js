@@ -4,7 +4,7 @@ import {
     DropdownContainer,
     UnorderedList,
     List,
-} from './Styles/Dropdown.Style';
+} from '../Styles/Dropdown.Style';
 
 export default function Dropdown(props) {
     return (

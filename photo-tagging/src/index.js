@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './Components/App';
 import './Styles/index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Scoreboard from './Scoreboard';
+import Scoreboard from './Components/Scoreboard';
 
 ReactDOM.render(
     <React.StrictMode>
